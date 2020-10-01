@@ -1,0 +1,49 @@
+.hannah-container {
+  flex: 1;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.hannah-logo {
+  padding: 80px;
+  width: -webkit-fill-available;
+}
+
+.hannah-div-button {
+  margin: 0px 80px;
+}
+
+.hannah-footer {
+  text-align: center;
+  font-size: x-small;
+  margin: auto;
+}
+
+.hannah-pargraph::first-letter {
+  text-transform: uppercase;
+}
+
+.hannah-pargraph {
+  font-feature-settings: 'kern';
+  margin-bottom: 7px;
+  font-family: nyt-cheltenham,georgia,'times new roman',times,serif;
+  font-size: 23px;
+  font-weight: 700;
+  line-height: 27px;
+  text-align: center;
+}
+
+.hannah-mini-pargraph {
+  font-feature-settings: 'kern';
+  margin-bottom: 7px;
+  font-family: nyt-cheltenham,georgia,'times new roman',times,serif;
+  font-size: 14px;
+  line-height: 27px;
+  text-align: center;
+  color: rgb(66, 133, 244);
+}
+
+.hannah-login p, img {
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
