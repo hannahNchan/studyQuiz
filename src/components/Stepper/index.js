@@ -21,7 +21,6 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Stepper = ({ maxSteps, data }) => {
-  console.log(maxSteps, data)
   const [activeStep, setActiveStep] = React.useState(0);
 
   const handleNext = () => {

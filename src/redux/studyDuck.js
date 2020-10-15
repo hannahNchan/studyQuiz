@@ -3,7 +3,8 @@ import { db } from '../../src/constants/apiRules';
 const dataInicial = {
   allAssignatures: [],
   subject: [],
-  dictionary: []
+  dictionary: [],
+  barLoader: false
 }
 
 const GET_ALL_ASSIGNATURES = 'GET_ALL_ASSIGNATURES';
@@ -11,6 +12,7 @@ const GET_SUBJECT = 'GET_SUBJECT';
 const GET_DICTIONARY = 'GET_DICTIONARY';
 const ADD_REACTIVE = 'ADD_REACTIVE';
 const REMOVE_REACTIVE = 'REMOVE_REACTIVE';
+const SET_BAR_LOADER = 'SET_BAR_LOADER';
 
 export default function studyDuck(state = dataInicial, action) {
   switch(action.type) {
@@ -34,6 +36,11 @@ export default function studyDuck(state = dataInicial, action) {
         ...state,
         subject: [...state.subject.filter((item, index) => index !== action.payload)]
       }
+    case SET_BAR_LOADER:
+      return {
+        ...state,
+        barLoader: action.payload
+      }
     default:
       return state
   }
@@ -41,11 +48,18 @@ export default function studyDuck(state = dataInicial, action) {
 
 export const getAllAssignaturesAction = () => async (dispatch, getState) => {
   try {
-    const res = await db.collection('subjects').doc('nameSubjects').get();  
-    dispatch({
-      type: GET_ALL_ASSIGNATURES,
-      payload: Object.values(res.data())
-    })
+    db.collection("subjects").get()
+      .then(querySnapshot => {
+        let results = [];
+          querySnapshot.forEach(doc => {
+            results.push(...Object.values(doc.data()));
+          });
+          dispatch({
+            type: GET_ALL_ASSIGNATURES,
+            payload: results
+          })
+        console.log(results)
+      });
   } catch(e) {
     console.log(e);
   }
@@ -79,6 +93,17 @@ export const removeAssignatureAction = (item) => async (dispatch, getState) => {
     dispatch({
       type: REMOVE_REACTIVE,
       payload: item
+    })
+  } catch(e) {
+    console.log(e);
+  }
+}
+
+export const barLoaderAction = (status) => async (dispatch, getState) => {
+  try {
+    dispatch({
+      type: SET_BAR_LOADER,
+      payload: status
     })
   } catch(e) {
     console.log(e);

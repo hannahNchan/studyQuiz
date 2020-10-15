@@ -1,7 +1,6 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import List from '@material-ui/core/List';
-
 import EditableLists from './EditableLists';
 import NormalLists from './NormalLists';
 import './styles.css';
@@ -18,17 +17,21 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Lists = (data) => {
+const Lists = ({ onCloseExpanded, editable, deleteSubject, dataAssignature }) => {
 
   const renderListOptional = () => {
-    if (data.editable) {
+    if (editable) {
       return (
         <Card className={classes.card}>
-          <EditableLists dataAssignature={data.dataAssignature} /> 
+          <EditableLists 
+            onCloseExpanded={onCloseExpanded} 
+            deleteSubject={(url) => deleteSubject(url)} 
+            dataAssignature={dataAssignature} 
+          />
         </Card>
       )
     } else {
-      return <NormalLists dataAssignature={data.dataAssignature} />
+      return <NormalLists dataAssignature={dataAssignature} />
     }
   };
 

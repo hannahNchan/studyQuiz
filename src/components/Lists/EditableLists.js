@@ -11,6 +11,8 @@ import ExpandMore from '@material-ui/icons/ExpandMore';
 import SettingsList from '../Settings';
 import { useHistory } from "react-router-dom";
 
+import { updateSubject } from '../../api/api.js';
+
 const useStyles = makeStyles((theme) => ({
   root: {
     width: '100%',
@@ -33,7 +35,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const EditableLists = ({ dataAssignature }) => {
+const EditableLists = ({ dataAssignature, deleteSubject }) => {
   let history = useHistory();
   const { url, description, title, quantity } = dataAssignature;
   const classes = useStyles();
@@ -59,7 +61,11 @@ const EditableLists = ({ dataAssignature }) => {
       <Collapse in={open} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
           <ListItem className={classes.nested}>
-            <SettingsList url={url} urlSelected={() => onHandleClick(url)} />
+            <SettingsList 
+              url={url} 
+              deleteSubject={() => deleteSubject(url)} 
+              urlSelected={() => onHandleClick(url)} 
+            />
           </ListItem>
         </List>
       </Collapse>

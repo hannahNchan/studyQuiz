@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SettingsList({ urlSelected }) {
+export default function SettingsList({ urlSelected, deleteSubject }) {
   const classes = useStyles();
   const [checked, setChecked] = React.useState(['wifi']);
 
@@ -60,7 +60,7 @@ export default function SettingsList({ urlSelected }) {
         </ListItemIcon>
         <ListItemText id="switch-list-label-bluetooth" primary="Eliminar asignatura" />
         <ListItemSecondaryAction>
-          <IconButton color="secondary" fontSize="large" aria-label="delete">
+          <IconButton color="secondary" fontSize="large" aria-label="delete" onClick={() => deleteSubject()}>
             <DeleteIcon />
           </IconButton>
         </ListItemSecondaryAction>

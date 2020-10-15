@@ -7,6 +7,9 @@ import ListItem from '@material-ui/core/ListItem';
 import Lists from '../../components/Lists';
 import QuizSubject from '../QuizSubject';
 import { getAllAssignaturesAction } from '../../redux/studyDuck';
+import empty from '../../assets/images/nothing.png';
+
+import './styles.css';
 
 const useStyles = makeStyles({
   root: {
@@ -47,6 +50,11 @@ const AssignaturesLists = () => {
             </span>
           )
         })
+      || 
+        (<div className="hannah-container">
+          <img src={empty} /> 
+          <p>No hay nada por acá, agrega una asignatura</p>
+        </div>)
       }
     </span>
   )

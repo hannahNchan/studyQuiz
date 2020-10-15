@@ -1,0 +1,16 @@
+.MuiSnackbar-root {
+    left: 8px;
+    right: 8px;
+    display: flex;
+    z-index: 1400;
+    position: relative !important;
+    align-items: center;
+    justify-content: center;
+}
+
+.hannah-container {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}

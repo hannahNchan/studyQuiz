@@ -6,13 +6,16 @@ import ListItemText from '@material-ui/core/ListItemText';
 import Divider from '@material-ui/core/Divider';
 import Typography from '@material-ui/core/Typography';
 import AvatarIcon from '../AvatarIcon';
+import Grid from '@material-ui/core/Grid';
 
 import './styles.css';
 
 const useStyles = makeStyles((theme) => ({
   inline: {
-    display: 'inline',
     marginLeft: '10px',
+    overflow: 'hidden',
+    whiteSpace: 'nowrap',
+    textOverflow: 'ellipsis',
   },
   line: {
     width: '80%',
@@ -56,16 +59,18 @@ const NormalLists = ({ dataAssignature }) => {
           }
           secondary={
             <>
-              <Typography
-                display="block" 
-                gutterBottom
-                component="span"
-                variant="caption"
-                className={classes.inline}
-                color="textPrimary"
-              >
-                {description}
-              </Typography>
+              <Grid zeroMinWidth>
+                <Typography
+                  display="block" 
+                  gutterBottom
+                  component="span"
+                  variant="caption"
+                  className={classes.inline}
+                  color="textPrimary"
+                >
+                  {description}
+                </Typography>
+              </Grid>
             </>
           }
         />
