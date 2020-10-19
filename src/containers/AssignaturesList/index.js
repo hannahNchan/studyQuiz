@@ -34,15 +34,15 @@ const AssignaturesLists = () => {
     dispatch(getAllAssignaturesAction())
   },[]);
   
-  const onHandleClick = url => {
-    history.push(`/materiaQuiz/${url}`);
+  const onHandleClick = (url, title) => {
+    history.push(`/materiaQuiz/${url}/${title}`);
   };
 
   return (
     <span>
       {getInfo.length !== 0 && getInfo.map(item => {
           return (
-            <span key={item.url} onClick={() => onHandleClick(item.url)}>
+            <span key={item.url} onClick={() => onHandleClick(item.url, item.title)}>
               <Lists 
                 dataAssignature={item}
                 editable={false}

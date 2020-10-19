@@ -10,6 +10,8 @@ import ExpandLess from '@material-ui/icons/ExpandLess';
 import ExpandMore from '@material-ui/icons/ExpandMore';
 import SettingsList from '../Settings';
 import { useHistory } from "react-router-dom";
+import Chip from '@material-ui/core/Chip';
+import FaceIcon from '@material-ui/icons/Face';
 
 import { updateSubject } from '../../api/api.js';
 
@@ -32,6 +34,9 @@ const useStyles = makeStyles((theme) => ({
   },
   delete: {
     color: 'red',
+  },
+  chip: {
+    marginRight: '20px',
   },
 }));
 
@@ -56,6 +61,14 @@ const EditableLists = ({ dataAssignature, deleteSubject }) => {
           <InboxIcon />
         </ListItemIcon>
         <ListItemText primary={title} />
+        <Chip 
+          className={classes.chip}
+          icon={<FaceIcon />} 
+          label={<p>{`Reactivos:${' '}${quantity}`}</p>}
+          variant="outlined" 
+          color="primary"
+          color="primary"
+        />
         {open ? <ExpandLess /> : <ExpandMore />}
       </ListItem>
       <Collapse in={open} timeout="auto" unmountOnExit>

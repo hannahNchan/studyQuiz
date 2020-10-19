@@ -25,6 +25,16 @@ export const updateAssignatures = async (collection, doc, data) => {
     });
 };
 
+export const createDocument = async (collection, doc) => {
+  db.collection(collection).doc(doc).set({})
+    .then(() => {
+        console.log("Document successfully created!");
+    })
+    .catch((error) => {
+        console.error("Error writing document: ", error);
+    });
+};
+
 export const updateSubject = async (collection, doc, data) => {
   db.collection(collection).doc(doc).set({...data})
     .then(() => {

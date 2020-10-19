@@ -1,5 +1,7 @@
-
-
 .hannah-card-quiz {
   padding: 30px 20px 20px 20px;
+}
+
+.hannah-no-data {
+  max-width: 50%;
 }

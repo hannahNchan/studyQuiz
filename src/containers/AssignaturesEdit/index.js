@@ -13,7 +13,7 @@ import Alert from '@material-ui/lab/Alert';
 import Lists from '../../components/Lists';
 import QuizSubject from '../QuizSubject';
 import { getAllAssignaturesAction } from '../../redux/studyDuck';
-import { deleteAssignature, updateSubject, updateAssignatures } from '../../api/api.js';
+import { createDocument, deleteAssignature, updateSubject, updateAssignatures } from '../../api/api.js';
 
 import './styles.css';
 
@@ -93,13 +93,14 @@ const AssignaturesLists = match => {
     const assignature = {
       description: state.description,
       icon: '',
-      quantity: 1,
+      quantity: 0,
       title: state.nameNew,
       url: slugify(state.nameNew, {
         replacement: '-',
         lower: true,
       }),
     };
+    createDocument('quiz', assignature.url);
     const newState = [...state.assignatures];
     newState.push(assignature);
     setState({

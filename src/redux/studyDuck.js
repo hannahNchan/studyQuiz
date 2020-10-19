@@ -67,10 +67,13 @@ export const getAllAssignaturesAction = () => async (dispatch, getState) => {
 
 export const getAssignatureAction = (url) => async (dispatch, getState) => {
   try {
-    const res = await db.collection('quiz').doc(url).get();  
+    const response = await db.collection('quiz').doc(url).get();  
+    console.log('exists->', response.exists);
+    console.log('payload', Object.values(response.data())[0])
+    const payload = response.exists ? Object.values(response.data())[0] : []; 
     dispatch({
       type: GET_SUBJECT,
-      payload: Object.values(res.data())[0]
+      payload 
     })
   } catch(e) {
     console.log(e);

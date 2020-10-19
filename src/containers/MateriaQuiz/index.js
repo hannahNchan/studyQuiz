@@ -6,6 +6,8 @@ import { useHistory } from "react-router-dom";
 import { getAssignatureAction } from '../../redux/studyDuck';
 import Stepper from '../../components/Stepper';
 import AppBarMenu from '../../components/AppBarMenu';
+import NoData from '../../assets/svg/noData.svg';
+import AppBarBottom from '../../components/AppBarBottom';
 
 import './styles.css';
 
@@ -16,7 +18,7 @@ const MateriaQuiz = ({ match }) => {
   const getSubject = useSelector(store => store.studyData.subject);
 
   useEffect(() => {
-    dispatch(getAssignatureAction(match.params.url))
+    dispatch(getAssignatureAction(match.params.url));
   },[]);
 
   const onHandleBack = () => {
@@ -27,13 +29,19 @@ const MateriaQuiz = ({ match }) => {
     <>
       <AppBarMenu title="Quiz" icon={<KeyboardBackspaceIcon onClick={() => onHandleBack()} />} />
       <div className="hannah-card-quiz">
-        {getSubject.length !== 0 && (
+        {getSubject && getSubject.length !== 0 && (
           <Stepper 
             maxSteps={getSubject.length} 
             data={getSubject} 
           />
+        ) || (
+          <div className="hannah-container">
+            <img src={NoData} alt="No data avalaible" className="hannah-no-data" />
+            <p>Ups, agrega reactivos para estudiar !</p>
+          </div>
         )}
       </div>
+      <AppBarBottom title={match.params.title} color={'#90caf9'} />
     </>
   )
 }

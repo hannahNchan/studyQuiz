@@ -4,10 +4,10 @@
   "private": true,
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build && npx cap sync",
+    "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "android": "npx cap add android"
+    "build:apk":"bash ./buildAPK.sh"
   },
   "plugins": {
     "cordova-plugin-passbook": {}
