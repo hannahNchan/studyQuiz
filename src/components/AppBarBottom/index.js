@@ -10,10 +10,18 @@ import AddIcon from '@material-ui/icons/Add';
 
 const useStyles = makeStyles((theme) => ({
   text: {
-    padding: theme.spacing(2, 2, 0),
+    padding: theme.spacing(1, 2, 0),
+    color: '#90caf9',
+    fontFamily: 'unset',
+    fontSize: '1.5rem',
+    fontVariant: 'small-caps',
+    fontWeight: 900,
   },
   paper: {
-    paddingBottom: 50,
+    backgroundColor: 'transparent',
+    paddingBottom: '0px !important',
+    boxShadow: '0 0 transparent',
+    textAlign: 'center',
   },
   list: {
     marginBottom: theme.spacing(2),
@@ -45,16 +53,16 @@ const AppBarBottom = ({ title, assignature, onHandleClick }) => {
     <>
       <CssBaseline />
       <Paper square className={classes.paper}>
-        <Typography className={classes.text} variant="h6" gutterBottom>
+        <Typography className={classes.text} variant="span" gutterBottom>
           {assignature}
         </Typography>
       </Paper>
-      <AppBar position="fixed" color="primary" className={classes.appBar}>
+      <AppBar style={{ backgroundColor: '#90caf9' }} position="fixed" color="primary" className={classes.appBar}>
         <Toolbar>
           {/*<IconButton edge="start" color="inherit" aria-label="open drawer">
             <MenuIcon />
           </IconButton>*/}
-          <Fab onClick={() => onHandleClick()} color="secondary" aria-label="add" className={classes.fabButton}>
+          <Fab color="primary" onClick={() => onHandleClick()} color="secondary" aria-label="add" className={classes.fabButton}>
             <AddIcon />
           </Fab>
           <div className={classes.grow} />

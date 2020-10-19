@@ -51,7 +51,7 @@ const EditableLists = ({ dataAssignature, deleteSubject }) => {
   };
 
   const onHandleClick = url => {
-    history.push(`/subjectEdition/${url}`);
+    history.push(`/subjectEdition/${url}/${title}`);
   };
 
   return (

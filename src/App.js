@@ -28,7 +28,7 @@ const App = () => {
             <Route exact path="/" component={Login} />
             <Route path="/selector" component={MainSelector} />
             <Route path="/materiaQuiz/:url/:title" component={MateriaQuiz} />
-            <Route path="/subjectEdition/:url" component={SubjectEdition} />
+            <Route path="/subjectEdition/:url:title" component={SubjectEdition} />
           </IonRouterOutlet>
         </IonPage>
       </IonApp>

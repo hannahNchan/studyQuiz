@@ -21,6 +21,7 @@ import AppBarMenu from "../../components/AppBarMenu";
 import { updateAssignatures, createDocument } from "../../api/api.js";
 import ResponsiveDialogMessage from "../../components/Dialog";
 import SnackBarMessage from "../../components/SnackBarMessage";
+import AppBarBottom from '../../components/AppBarBottom';
 
 import "./styles.css";
 
@@ -61,6 +62,7 @@ const useStyles = makeStyles((theme) => ({
   scroll: {
     height: '-webkit-fill-available',
     overflowY: 'scroll',
+    marginBottom: '250px',
   },
 }));
 
@@ -128,6 +130,10 @@ const SubjectEdition = ({ match, history }) => {
     history.goBack();
   };
 
+  const onHandleClickBar = () => {
+    console.log('HOla')
+  };
+
   const handleChangeQuestion = (event, item) => {
     const { value } = event.target;
     let tempArray = [...state.quiz];
@@ -148,6 +154,7 @@ const SubjectEdition = ({ match, history }) => {
         title="Editar evaluación"
         icon={<KeyboardBackspaceIcon onClick={() => onHandleBack()} />}
       />
+      <AppBarBottom assignature={match.params.title} title={null} onHandleClick={() => handleAddReactive()} />
       <div className={classes.scroll}>
         <List>
           {state.quiz.map((item, index) => {
@@ -220,15 +227,6 @@ const SubjectEdition = ({ match, history }) => {
           })}
         </List>
       </div>
-      <div className={classes.addButton}>
-        <Button
-          variant="outlined"
-          color="primary"
-          onClick={() => handleAddReactive()}
-        >
-          Agregar reactivo
-        </Button>
-        </div>
       <ResponsiveDialogMessage
         title="Advertencia !"
         content="Se eliminará el reactivo"
