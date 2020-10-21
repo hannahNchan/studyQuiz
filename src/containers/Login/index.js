@@ -1,8 +1,9 @@
 import React from "react"
 import GoogleButton from 'react-google-button'
-
 import Grid from '@material-ui/core/Grid';
+
 import logo from '../../assets/images/logo.svg';
+import { getLogin } from '../../auth';
 
 import './styles.css';
 
@@ -23,7 +24,8 @@ const Login = ({ history }) => {
           type="light"
           onClick={(e) => {
               e.preventDefault();
-              history.push('/selector');
+              getLogin();
+            //history.push('/selector');
             }
           }
         />

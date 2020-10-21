@@ -2,9 +2,11 @@ import { db } from '../../src/constants/apiRules';
 
 const dataInicial = {
   allAssignatures: [],
-  subject: [],
+  barLoader: false,
+  isLoggued: false,
   dictionary: [],
-  barLoader: false
+  subject: [],
+  user: {},
 }
 
 const GET_ALL_ASSIGNATURES = 'GET_ALL_ASSIGNATURES';
@@ -68,8 +70,6 @@ export const getAllAssignaturesAction = () => async (dispatch, getState) => {
 export const getAssignatureAction = (url) => async (dispatch, getState) => {
   try {
     const response = await db.collection('quiz').doc(url).get();  
-    console.log('exists->', response.exists);
-    console.log('payload', Object.values(response.data())[0])
     const payload = response.exists ? Object.values(response.data())[0] : []; 
     dispatch({
       type: GET_SUBJECT,

@@ -46,25 +46,27 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const AppBarBottom = ({ title, assignature, onHandleClick }) => {
+const AppBarBottom = ({ button, title, assignature, onHandleClick }) => {
   const classes = useStyles();
 
   return (
     <>
       <CssBaseline />
       <Paper square className={classes.paper}>
-        <Typography className={classes.text} variant="span" gutterBottom>
+        <span className={classes.text}>
           {assignature}
-        </Typography>
+        </span>
       </Paper>
       <AppBar style={{ backgroundColor: '#90caf9' }} position="fixed" color="primary" className={classes.appBar}>
         <Toolbar>
           {/*<IconButton edge="start" color="inherit" aria-label="open drawer">
             <MenuIcon />
           </IconButton>*/}
-          <Fab color="primary" onClick={() => onHandleClick()} color="secondary" aria-label="add" className={classes.fabButton}>
-            <AddIcon />
-          </Fab>
+          {button && (
+            <Fab color="primary" onClick={() => onHandleClick()} color="secondary" aria-label="add" className={classes.fabButton}>
+                  <AddIcon />
+            </Fab>
+          )}
           <div className={classes.grow} />
           {title && <p>{title}</p>}
           {/*<IconButton color="inherit">

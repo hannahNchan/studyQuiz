@@ -154,7 +154,7 @@ const SubjectEdition = ({ match, history }) => {
         title="Editar evaluación"
         icon={<KeyboardBackspaceIcon onClick={() => onHandleBack()} />}
       />
-      <AppBarBottom assignature={match.params.title} title={null} onHandleClick={() => handleAddReactive()} />
+      <AppBarBottom button assignature={match.params.title} title={null} onHandleClick={() => handleAddReactive()} />
       <div className={classes.scroll}>
         <List>
           {state.quiz.map((item, index) => {
